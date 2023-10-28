@@ -1,0 +1,145 @@
+<nav class="navbar navbar-light bg-primary">
+  <div class="container fluid">
+    <h1 style="color: aliceblue">Data Mahasiswa</h1>
+    <div class="d-flex">
+      <button
+        (click)="clickAddStudent()"
+        type="button"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+        class="btn btn-success"
+      >
+        Tambahkan Data Mahasiswa
+      </button>
+    </div>
+  </div>
+</nav>
+
+<table class="table mt-2">
+  <thead>
+    <tr>
+      <th scope="col">Nama</th>
+      <th scope="col">NIM</th>
+      <th scope="col">Jurusan</th>
+      <th scope="col">Tahun Masuk</th>
+      <th scope="col">Tindakan</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of studentData">
+      <td>{{ row.nama }}</td>
+      <td>{{ row.nim }}</td>
+      <td>{{ row.jurusan }}</td>
+      <td>{{ row.tahunMasuk }}</td>
+      <td>
+        <button
+          (click)="onEdit(row)"
+          style="color: aliceblue"
+          type="button"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+          class="btn btn-info"
+        >
+          Edit
+        </button>
+        <button (click)="deleteStudentData(row)" class="btn btn-danger mx-1">
+          Hapus
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Data Mahasiswa</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formValue">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Nama</label>
+            <input
+              type="text"
+              formControlName="nama"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">NIM</label>
+            <input
+              type="text"
+              formControlName="nim"
+              class="form-control"
+              id="exampleInputPassword1"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label"
+              >Jurusan</label
+            >
+            <input
+              formControlName="jurusan"
+              type="text"
+              class="form-control"
+              id="exampleInputPassword1"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label"
+              >Tahun Masuk</label
+            >
+            <input
+              formControlName="tahunMasuk"
+              type="text"
+              class="form-control"
+              id="exampleInputPassword1"
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          id="cancel"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+        >
+          Batal
+        </button>
+        <button
+          type="button"
+          *ngIf="showAdd"
+          (click)="postStudentDetails()"
+          class="btn btn-primary"
+        >
+          Tambahkan
+        </button>
+        <button
+          type="button"
+          *ngIf="showUpdate"
+          (click)="updateStudentDetails()"
+          class="btn btn-primary"
+        >
+          Update
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

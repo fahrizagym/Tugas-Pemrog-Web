@@ -1,0 +1,29 @@
+{
+  "posts": [
+    {
+      "nama": "Dewa",
+      "nim": "D121211045",
+      "jurusan": "Elektro",
+      "tahunMasuk": "2020",
+      "id": 5
+    },
+    {
+      "nama": "Gary",
+      "nim": "D121211000",
+      "jurusan": "Kedokteran",
+      "tahunMasuk": "2021",
+      "id": 6
+    },
+    {
+      "nama": "adasd",
+      "nim": "112121212",
+      "jurusan": "Kehutanan",
+      "tahunMasuk": "1212",
+      "id": 9
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}
